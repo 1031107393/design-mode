@@ -1,7 +1,7 @@
 package com.hogan.designmode.singleton;
 
 /**
- * 单例
+ * 饿汉式单例
  * wujun
  * 2019/11/20 21:54
  */
