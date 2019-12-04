@@ -36,5 +36,10 @@ public class StreamTest {
         //int i = lists.stream().collect(Collectors.summarizingInt(StreamDemo::getNum)).getMax();
 
         //System.out.println(i);
+        /*LocalDateTime localDateTime = LocalDateTime.now();
+        LocalDateTime firstDayOfMonth = localDateTime.withDayOfYear(1);
+        LocalDateTime l = localDateTime.with(TemporalAdjusters.dayOfWeekInMonth(1, DayOfWeek.MONDAY));
+
+        System.out.println(l.format(DateTimeFormatter.ISO_OFFSET_DATE_TIME));*/
     }
 }
