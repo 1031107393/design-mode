@@ -1,5 +1,6 @@
 package com.hogan.designmode.singleton;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 /**
@@ -7,7 +8,9 @@ import java.util.Objects;
  * wujun
  * 2019/12/02 22:59
  */
-public class LazyInnerClassSingleton {
+public class LazyInnerClassSingleton implements Serializable {
+
+    private static final long serialVersionUID = 1734938793070682320L;
 
     private LazyInnerClassSingleton(){
         if (Objects.nonNull(InnerClass.SINGLETON)) {
@@ -22,5 +25,9 @@ public class LazyInnerClassSingleton {
 
     private static class InnerClass {
         private static final LazyInnerClassSingleton SINGLETON = new LazyInnerClassSingleton();
+    }
+
+    private Object readResolve() {
+        return InnerClass.SINGLETON;
     }
 }

@@ -4,7 +4,7 @@ import com.hogan.designmode.factory.entity.Animal;
 import com.hogan.designmode.factory.entity.Fruit;
 
 /**
- * TODO
+ * 农场抽象接口
  * wujun
  * 2019/12/02 11:00
  */
