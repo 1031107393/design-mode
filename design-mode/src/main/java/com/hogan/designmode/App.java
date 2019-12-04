@@ -46,6 +46,34 @@ public class App {
             e.printStackTrace();
         }
         thread2.start();*/
+        /*String[] arr = new String[]{"chengdu", "chongqing", "xian", "shenzheng", "xian"};
+        List<String> lists = new ArrayList<String>();
+        lists.add("chengdu");
+        lists.add("chongqing");
+        String first = lists.stream()
+                .parallel()
+                .distinct()
+                .map(String::toUpperCase)
+                .findFirst()
+                .orElse("demo");
+        System.out.println(first);*/
+        /*Stream.of(lists)
+                .parallel()
+                .distinct()
+                .map(String::toUpperCase)
+                .collect(Collectors.toList())
+                .forEach(System.out::println);*/
+        /*Stream.generate(() ->{
+            Random random = new Random(47);
+            return random.nextInt();
+        }).limit(10).forEach(System.out::println);*/
+        /*Integer[] arr = new Integer[]{1, 2, 4, 1000, 1, 2342, 12321123};
+        Arrays.stream(arr).max(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o1 < o2 ? 1 : -1;
+            }
+        }).ifPresent(System.out::println);*/
 
     }
 }

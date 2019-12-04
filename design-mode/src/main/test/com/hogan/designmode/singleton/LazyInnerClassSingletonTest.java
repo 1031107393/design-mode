@@ -1,6 +1,8 @@
 package com.hogan.designmode.singleton;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -12,9 +14,16 @@ public class LazyInnerClassSingletonTest {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
-       /* CountDownLatch latch = new CountDownLatch(2);
+        /*CountDownLatch latch = new CountDownLatch(2);
         new Thread(new Process(latch)).start();
         new Thread(new Process(latch)).start();*/
+        DemoBean singleton = SingletonEnum.getInstance();
+        List lists = new ArrayList<>();
+        lists.add(new DemoBean());
+        singleton.setLists(lists);
+        System.out.println(singleton.getLists());
+        DemoBean copy = singleton.clone();
+        System.out.println(copy.getLists());
         // 反射破坏单例
         /*try {
             Class clz =  Class.forName("com.hogan.designmode.singleton.LazyInnerClassSingleton");
@@ -52,8 +61,24 @@ public class LazyInnerClassSingletonTest {
         @Override
         public void run() {
             latch.countDown();
-            LazyInnerClassSingleton singleton = LazyInnerClassSingleton.getInstance();
-            System.out.println(singleton);
+            DemoBean singleton = SingletonEnum.getInstance();
+            List lists = new ArrayList<>();
+            lists.add(new Object());
+            singleton.setLists(lists);
+            System.out.println(singleton.getLists());
+            DemoBean copy = singleton.clone();
+            System.out.println(copy.getLists());
+
+            /*try {
+             *//*Constructor constructor = SingletonEnum.class.getDeclaredConstructor(String.class, int.class);
+                constructor.setAccessible(true);
+                SingletonEnum singletonEnum = (SingletonEnum) constructor.newInstance("666", 666);
+                DemoBean singleton2 = singletonEnum.getDemoBean();
+                System.out.println(singleton2);*//*
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }*/
         }
     }
 }
