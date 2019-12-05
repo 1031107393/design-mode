@@ -18,6 +18,10 @@ public class DemoBean implements Cloneable, Serializable {
 
     private List<DemoBean> lists;
 
+    private Integer i;
+
+    private String s;
+
     public DemoBean() {
     }
 
@@ -27,6 +31,22 @@ public class DemoBean implements Cloneable, Serializable {
 
     public void setLists(List<DemoBean> lists) {
         this.lists = lists;
+    }
+
+    public Integer getI() {
+        return i;
+    }
+
+    public void setI(Integer i) {
+        this.i = i;
+    }
+
+    public String getS() {
+        return s;
+    }
+
+    public void setS(String s) {
+        this.s = s;
     }
 
     @Override
