@@ -1,6 +1,6 @@
 package com.hogan.designmode.singleton;
 
-import com.hogan.designmode.StreamDemo;
+import com.hogan.designmode.entity.StreamDemo;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.hogan.designmode;
+package com.hogan.designmode.entity;
 
 /**
  * TODO
