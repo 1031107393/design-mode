@@ -11,6 +11,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * 日志切面
@@ -53,7 +54,7 @@ public class LogAspect {
             String methodName = joinPoint.getSignature().getName();
             String fullMethodName = StringUtils.joinWith(".", className, methodName);
             // 打印
-            log.info("{}方法返回{}", fullMethodName, res.toString());
+            log.info("{}方法返回{}", fullMethodName, Objects.isNull(res) ? "null" : res.toString());
         } finally {
             threadLocal.remove();
         }

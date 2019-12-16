@@ -1,0 +1,43 @@
+package com.hogan.designmode.web;
+
+import com.hogan.designmode.aspect.Log;
+import com.yzw.mro.distributelock.constant.Constant;
+import com.yzw.mro.distributelock.service.LockService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.concurrent.TimeUnit;
+
+/**
+ * TODO
+ * wujun
+ * 2019/12/16 18:10
+ */
+
+@RestController
+@RequestMapping("/lock")
+public class LockController {
+
+    @Autowired
+    LockService lockService;
+
+    @GetMapping("/getLock")
+    @Log
+    public String getLock() {
+
+        String value = lockService.getLock(Constant.DISTRIBUTE_LOCK_KEY, 5000L, TimeUnit.MILLISECONDS);
+        System.out.println(value);
+        lockService.unlock(Constant.DISTRIBUTE_LOCK_KEY, value);
+        return value;
+    }
+
+    @GetMapping("/unLock")
+    @Log
+    public void unLock(@RequestParam String value) {
+
+        lockService.unlock(Constant.DISTRIBUTE_LOCK_KEY, value);
+    }
+}
