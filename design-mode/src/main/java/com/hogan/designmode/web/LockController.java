@@ -3,6 +3,7 @@ package com.hogan.designmode.web;
 import com.hogan.designmode.aspect.Log;
 import com.yzw.mro.distributelock.constant.Constant;
 import com.yzw.mro.distributelock.service.LockService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/lock")
+@Slf4j
 public class LockController {
 
     @Autowired
@@ -39,5 +41,20 @@ public class LockController {
     public void unLock(@RequestParam String value) {
 
         lockService.unlock(Constant.DISTRIBUTE_LOCK_KEY, value);
+    }
+
+    @GetMapping("/rLock")
+    @Log
+    public void rLock() throws InterruptedException {
+
+        try {
+            lockService.lock("wujun", -1);
+            log.info("加锁wujun成功");
+            Thread.sleep(9000);
+        } finally {
+            lockService.unlock("wujun");
+            log.info("释放锁wujun成功");
+        }
+
     }
 }
