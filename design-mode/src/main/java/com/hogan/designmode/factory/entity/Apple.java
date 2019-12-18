@@ -10,6 +10,8 @@ import java.awt.*;
  */
 public class Apple implements Fruit {
 
+    private static final long serialVersionUID = -2119668450124525595L;
+
     JScrollPane sp;
     JFrame jf = new JFrame("抽象工厂模式测试");
 
